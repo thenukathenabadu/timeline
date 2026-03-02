@@ -1,5 +1,3 @@
-@import 'vis-timeline/styles/vis-timeline-graph2d.min.css';
-
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -26,32 +24,3 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── vis-timeline dark theme overrides ──────────────────────────────────── */
-.vis-timeline {
-  background: var(--bg);
-  border-color: var(--border);
-}
-.vis-time-axis .vis-text {
-  color: var(--muted);
-  font-size: 11px;
-}
-.vis-time-axis .vis-grid.vis-minor { border-color: var(--border); }
-.vis-time-axis .vis-grid.vis-major { border-color: #2a2a3e; }
-.vis-panel.vis-center,
-.vis-panel.vis-left,
-.vis-panel.vis-right { border-color: var(--border); }
-.vis-item { border-width: 1px; }
-.vis-item.vis-selected {
-  border-width: 2px;
-  box-shadow: 0 0 0 2px rgba(124,58,237,0.4);
-}
-.vis-current-time { background: var(--brand); width: 1px; }
-.vis-tooltip {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  color: var(--text);
-  font-size: 12px;
-  border-radius: 6px;
-  padding: 6px 10px;
-  max-width: 320px;
-}

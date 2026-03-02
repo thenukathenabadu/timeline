@@ -1,16 +1,10 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import dynamic from 'next/dynamic';
 import { fetchEvents, triggerScrape, type TimelineEvent } from './lib/api';
 import SidePanel from './components/SidePanel/SidePanel';
 import Filters from './components/Filters/Filters';
-
-// vis-timeline uses browser APIs — load client-side only
-const TimelineView = dynamic(() => import('./components/Timeline/TimelineView'), {
-  ssr: false,
-  loading: () => <TimelinePlaceholder text="Loading timeline…" />,
-});
+import TimelineView from './components/Timeline/TimelineView';
 
 export default function Home() {
   const [events, setEvents] = useState<TimelineEvent[]>([]);
