@@ -1,0 +1,25 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:        #09090f;
+  --bg-card:   #111118;
+  --border:    #1e1e2e;
+  --text:      #e8e8f0;
+  --muted:     #6b6b8a;
+  --brand:     #7c3aed;
+  --brand-dim: rgba(124, 58, 237, 0.15);
+  --green:     #22c55e;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
+
+html, body {
+  height: 100%;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
