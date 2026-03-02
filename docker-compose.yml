@@ -40,6 +40,8 @@ services:
     environment:
       DATABASE_URL: postgresql+asyncpg://timeline:${POSTGRES_PASSWORD:-timeline_dev}@postgres:5432/timeline
       REDIS_URL: redis://redis:6379/0
+      # Ollama runs on the host machine — host.docker.internal resolves to the host
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
     depends_on:
       postgres:
         condition: service_healthy
@@ -47,6 +49,7 @@ services:
         condition: service_healthy
     volumes:
       - ./backend:/app
+      - hf_cache:/root/.cache/huggingface
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
   celery-worker:
@@ -58,6 +61,7 @@ services:
     environment:
       DATABASE_URL: postgresql+asyncpg://timeline:${POSTGRES_PASSWORD:-timeline_dev}@postgres:5432/timeline
       REDIS_URL: redis://redis:6379/0
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
     depends_on:
       postgres:
         condition: service_healthy
@@ -65,6 +69,7 @@ services:
         condition: service_healthy
     volumes:
       - ./backend:/app
+      - hf_cache:/root/.cache/huggingface
     command: celery -A workers.celery_app worker --loglevel=info --concurrency=2
 
   celery-beat:
@@ -76,6 +81,7 @@ services:
     environment:
       DATABASE_URL: postgresql+asyncpg://timeline:${POSTGRES_PASSWORD:-timeline_dev}@postgres:5432/timeline
       REDIS_URL: redis://redis:6379/0
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
     depends_on:
       postgres:
         condition: service_healthy
@@ -83,8 +89,10 @@ services:
         condition: service_healthy
     volumes:
       - ./backend:/app
+      - hf_cache:/root/.cache/huggingface
     command: celery -A workers.celery_app beat --loglevel=info
 
 volumes:
   postgres_data:
   redis_data:
+  hf_cache:

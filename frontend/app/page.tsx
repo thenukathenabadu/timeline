@@ -2,7 +2,7 @@ export default function Home() {
   const phases = [
     { id: 0, label: 'Foundation',           status: 'done'    },
     { id: 1, label: 'Scraping',             status: 'done'    },
-    { id: 2, label: 'AI Pipeline',          status: 'pending' },
+    { id: 2, label: 'AI Pipeline',          status: 'done'    },
     { id: 3, label: 'Timeline UI',          status: 'pending' },
     { id: 4, label: 'Filtering',            status: 'pending' },
     { id: 5, label: 'Wikipedia history',    status: 'pending' },
