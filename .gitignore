@@ -30,7 +30,7 @@ docker-compose.override.yml
 # AI models (large files — download at runtime via config)
 *.bin
 *.safetensors
-models/
+/models/
 
 # Database
 *.db
