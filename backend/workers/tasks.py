@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 def _run(coro):
     """Run an async coroutine from a sync Celery task."""
-    return asyncio.get_event_loop().run_until_complete(coro)
+    return asyncio.run(coro)
 
 
 # ── Phase 1: Scraping ─────────────────────────────────────────────────────────

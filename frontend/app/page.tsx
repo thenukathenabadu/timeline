@@ -31,8 +31,8 @@ export default function Home() {
   async function handleScrape() {
     setScraping(true);
     await triggerScrape();
-    // Give the worker a moment then reload
-    setTimeout(() => { load(); setScraping(false); }, 3000);
+    // Reload after 2 min — enough for scrape + embed + cluster
+    setTimeout(() => { load(); setScraping(false); }, 120_000);
   }
 
   return (

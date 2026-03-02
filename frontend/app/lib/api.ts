@@ -61,6 +61,6 @@ export async function fetchSources(): Promise<Source[]> {
 export async function triggerScrape(sourceId?: string): Promise<void> {
   const url = sourceId
     ? `${BASE}/api/v1/admin/scrape?source=${sourceId}`
-    : `${BASE}/api/v1/admin/scrape`;
+    : `${BASE}/api/v1/admin/scrape-and-process`;
   await fetch(url, { method: 'POST' });
 }

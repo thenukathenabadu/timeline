@@ -46,7 +46,7 @@ async def save_articles(
                 content_hash=content_hash,
                 published_at=raw.published_at,
             )
-            .on_conflict_do_nothing(index_elements=["content_hash"])
+            .on_conflict_do_nothing()  # catches url OR content_hash collisions
         )
         result = await session.execute(stmt)
         if result.rowcount:
